@@ -16,6 +16,7 @@ public class pincodeCheck {
 
 		assertTrue(pin.isPincodeValid("400088"));
 		assertFalse(pin.isPincodeValid("A400088"));
+		assertFalse(pin.isPincodeValid("400088B"));
 	}
 
 }
