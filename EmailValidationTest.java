@@ -14,7 +14,7 @@ public class EmailValidationTest {
 	public void emailCheck() {
 	EmailValidation email = new EmailValidation();
 	
-	assertTrue(email.isEmailValid(".co"));
+	assertTrue(email.isEmailValid("abc.xyz@bridgelabz.co"));
 	
 	}
 }
