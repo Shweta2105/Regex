@@ -7,7 +7,7 @@ public class EmailValidation {
 	
 	public boolean isEmailValid(String mail) {
 		
-		return Pattern.matches("^([a-zA-Z)-9.]+)$", mail);
+		return Pattern.matches("^@([a-zA-Z)-9.]+)$", mail);
 
 	}
 
