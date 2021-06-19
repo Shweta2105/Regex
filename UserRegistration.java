@@ -1,75 +1,73 @@
 package regex.regularExpressions;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /*
  * @authorShweta
  * Day 19 Assignment User registration Problem
+ * Refactor for day 20 assignment
  */
 public class UserRegistration {
+	private final static String NAME_PATTERN = "^[A-Z][a-z]{3,15}$";
+	private final static String EMAIL_PATTERN = "^([a-zA-Z0-9.]+)([0-9a-zA-Z]{0,1}@([a-zA-Z0-9.]+([a-zA-Z]{2,3}))+([a-z]{0,2}))$";
+	private final static String MOBILE_PATTERN = "^\\d{2}[ ]\\d{10}$";
+	private final static String PASSWORD_PATTERN = "^(?=.*?[0-9a-zA-Z])[0-9a-zA-Z]*[@#$%!][0-9a-zA-Z]*$";
 	
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter the first name : ");
-		String firstName = scan.nextLine();
-		System.out.println("Enter the last name : ");
-		String lastName = scan.nextLine();
-		System.out.println("Enter the email id : ");
-		String email = scan.nextLine();
-		System.out.println("Enter the mobile number : ");
-		String mob = scan.nextLine();
-		System.out.println("Enter the password : ");
-		String password = scan.nextLine();
-		
-		System.out.println("Is User First name valid? : "+validateFirstName(firstName));
-		System.out.println("Is user Last name valid? : "+validateLastName(lastName));
-		System.out.println("Is user email valid? : "+validateEmail(email));
-		System.out.println("Is user mobile number valid? : "+validateMobile(mob));
-		System.out.println("Is user password valid? : "+validatePassword(password));
-		
-		
-	}
-
-	private static boolean validatePassword(String password) { //UC8-> UC7-> UC6->UC5 password validation
+	public boolean validatePassword(String password) { //UC8-> UC7-> UC6->UC5 password validation
 		/*@param password
 		 * @ return boolean
 		 */
 		
-		return Pattern.matches("^(?=.*?[0-9a-zA-Z])[0-9a-zA-Z]*[@#$%][0-9a-zA-Z]*$", password);
+		Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+		Matcher matcher = pattern.matcher(password);
+		boolean result = matcher.matches();
+		return result;
 	}
 
-	private static boolean validateMobile(String mob) {	//UC4 mobile number validation
+	public boolean validateMobile(String mob) {	//UC4 mobile number validation
 		/*@param mobile
 		 * @ return boolean
 		 */
 		
-		return Pattern.matches("^\\d{2}[ ]\\d{10}$", mob);
+		Pattern pattern = Pattern.compile(MOBILE_PATTERN);
+		Matcher matcher = pattern.matcher(mob);
+		boolean result = matcher.matches();
+		return result;
 	}
 
-	private static boolean validateEmail(String email) {	//UC3 email validation
+	public boolean validateEmail(String email) {	//UC3 email validation
 		/*@param Email
 		 * @ return boolean
 		 */
 		
-		return Pattern.matches("^([a-zA-Z0-9.]+)([0-9a-zA-Z]{0,1}@([a-zA-Z0-9.]+([a-zA-Z]{2,3}))+([a-z]{0,2}))$", email);
-
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+		Matcher matcher = pattern.matcher(email);
+		boolean result = matcher.matches();
+		return result;
 	}
 
-	private static boolean validateLastName(String lastName) { //UC2 Last name validation
+	public boolean validateLastName(String lastName) { //UC2 Last name validation
 		/*@param Last name
 		 * @ return boolean
 		 */
-		
-		return Pattern.matches("^[A-Z][a-z]{3,15}$", lastName);
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+		Matcher matcher = pattern.matcher(lastName);
+		boolean result = matcher.matches();
+		return result;
 	}
 
-	private static boolean validateFirstName(String firstName) { //UC1 firstname validation
+	public boolean validateFirstName(String firstName) { //UC1 firstname validation
 		
 		/*@param first name
 		 * @ return boolean
 		 */
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+		Matcher matcher = pattern.matcher(firstName);
+		boolean result = matcher.matches();
 		
-		return Pattern.matches("^[A-Z][a-z]{3,15}$", firstName);
+		
+		return result;
 		
 		
 	}
