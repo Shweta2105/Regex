@@ -29,7 +29,7 @@ public class UserRegistration {
 
 	private static boolean validatePassword(String password) {
 		
-		return Pattern.matches("^([a-z]){8,25}$", password);
+		return Pattern.matches("^(?=.*[a-z])(?=.*[A-Z]).{8,25}$", password);
 	}
 
 	private static boolean validateMobile(String mob) {
