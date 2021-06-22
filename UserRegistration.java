@@ -14,68 +14,68 @@ public class UserRegistration {
 	private final static String MOBILE_PATTERN = "^\\d{2}[ ]\\d{10}$";
 	private final static String PASSWORD_PATTERN = "^(?=.*?[0-9a-zA-Z])[0-9a-zA-Z]*[@#$%!][0-9a-zA-Z]*$";
 	
-	public String validatePassword(String password) { //UC8-> UC7-> UC6->UC5 password validation
+	public boolean validatePassword(String password) throws UserDefinedException { //UC8-> UC7-> UC6->UC5 password validation
 		/*@param password
 		 * @ return boolean
 		 */
-		if(password.matches(PASSWORD_PATTERN) == true) {
-			return "HAPPY"; }
-		else {								//UC10 return HAppy if matches
-			return "SAD";
-		
-		}
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+    	Matcher matcher = pattern.matcher(password);
+    	if(!matcher.matches()) {
+		throw new UserDefinedException("Enter a valid pattern");
+	}
+    	return matcher.matches();
 		
 	}
 
-	public String validateMobile(String mob) {	//UC4 mobile number validation
+	public boolean validateMobile(String mob) throws UserDefinedException {	//UC4 mobile number validation
 		/*@param mobile
 		 * @ return boolean
 		 */
-		if(mob.matches(MOBILE_PATTERN) == true) {
-			return "HAPPY"; }
-		else {
-			return "SAD" ;
-		
-		}
+		Pattern pattern = Pattern.compile(MOBILE_PATTERN);
+    	Matcher matcher = pattern.matcher(mob);
+    	if(!matcher.matches()) {
+		throw new UserDefinedException("Enter a valid pattern");
+	}
+    	return matcher.matches();
 		
 	}
 
-	public String validateEmail(String email) {	//UC3 email validation
+	public boolean validateEmail(String email) throws UserDefinedException {	//UC3 email validation
 		/*@param Email
 		 * @ return boolean
 		 */
 		
-		if(email.matches(EMAIL_PATTERN) == true) {
-			return "HAPPY"; }
-		else {
-			return "SAD";
-		
-		}
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+    	Matcher matcher = pattern.matcher(email);
+    	if(!matcher.matches()) {
+		throw new UserDefinedException("Enter a valid pattern");
+	}
+    	return matcher.matches();
 	}
 
-	public String validateLastName(String lastName) { //UC2 Last name validation
+	public boolean validateLastName(String lastName) throws UserDefinedException { //UC2 Last name validation
 		/*@param Last name
 		 * @ return boolean
 		 */
-		if(lastName.matches(NAME_PATTERN) == true) {
-			return "HAPPY" ; }
-		else {
-			return "SAD" ;
-		
-		}
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+    	Matcher matcher = pattern.matcher(lastName);
+    	if(!matcher.matches()) {
+		throw new UserDefinedException("Enter a valid pattern");
+	}
+    	return matcher.matches();
 	}
 
-	public String validateFirstName(String firstName) { //UC1 firstname validation
+	public boolean validateFirstName(String firstName) throws UserDefinedException { //UC1 firstname validation
 		
 		/*@param first name
 		 * @ return boolean
 		 */
-		if(firstName.matches(NAME_PATTERN) == true) {
-			return "HAPPY"; }
-		else {
-			return "SAD" ;
-		
-		}
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+    	Matcher matcher = pattern.matcher(firstName);
+    	if(!matcher.matches()) {
+		throw new UserDefinedException("Enter a valid pattern");
+	}
+    	return matcher.matches();
 		
 		
 	}
